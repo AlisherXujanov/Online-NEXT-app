@@ -10,8 +10,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <GlobalNav />
-        {children}
+        <div className="main-layout-wrapper">
+          <GlobalNav />
+          {children}
+        </div>
       </body>
     </html>
   )

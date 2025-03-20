@@ -37,11 +37,11 @@ function Nav(props) {
                 </div>
             </div>
             <div className="right">
-                <Link href="/">Explore</Link>
-                <Link href="/about">About</Link>
-                <Link href="/nfts">NFTs</Link>
-                <Link href="/trending">Trending</Link>
-                <Link href="/faq">FAQ</Link>
+                <Link href="/" className="nav-link">Explore</Link>
+                <Link href="/about" className="nav-link">About</Link>
+                <Link href="/nfts" className="nav-link">NFTs</Link>
+                <Link href="/trending" className="nav-link">Trending 🔥</Link>
+                <Link href="/faq" className="nav-link">FAQ 💬</Link>
             </div>
         </nav>
     );

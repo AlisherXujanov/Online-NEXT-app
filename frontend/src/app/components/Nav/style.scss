@@ -1,7 +1,7 @@
 @import "../../assets/styles/vars";
 
 nav.global-nav {
-    padding: 20px 200px;
+    padding: 20px 0;
     @include grid(2);
 
     .left {
@@ -42,11 +42,18 @@ nav.global-nav {
     }
 
     .right {
-        @include flex($justify: flex-end, $gap: 20px);
+        @include flex($justify: flex-end, $gap: 0);
 
         a {
+            padding: 10px 20px;
             color: $dark;
             text-decoration: none;
+            font-family: "ClashDisplay-Medium", sans-serif;
+
+            &.active {
+                font-weight: 600;
+                color: $red;
+            }
         }
     }
 }
