@@ -41,5 +41,12 @@ nav.global-nav {
         }
     }
 
-    .right {}
+    .right {
+        @include flex($justify: flex-end, $gap: 20px);
+
+        a {
+            color: $dark;
+            text-decoration: none;
+        }
+    }
 }
