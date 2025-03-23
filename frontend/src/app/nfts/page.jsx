@@ -15,6 +15,7 @@ function NFTs(props) {
     // ...
     const [memory, setMemory] = useState("Hello world")
     const [rangeInp, setRangeInput] = useState(50)
+    const [color, setColor] = useState("black")
     // ---------------
     // all other staff
     // ...
@@ -22,8 +23,12 @@ function NFTs(props) {
         const { value, name } = e.target
         if (name === "memory") {
             setMemory(value)
-        } else if (name === "range") {
+        }
+        else if (name === "range") {
             setRangeInput(value)
+        }
+        else if (name === 'color') {
+            setColor(value)
         }
     }
 
@@ -42,25 +47,25 @@ function NFTs(props) {
 
             <div className="box" style={boxStyle}>
                 <h3>{memory}</h3>
-                <input 
-                    type="text" 
-                    onChange={handleChange} 
+                <input
+                    type="text"
+                    onChange={handleChange}
                     name='memory'
                     value={memory}
                 />
             </div>
             <div className="box" style={boxStyle}>
                 <h2>Range: {rangeInp}</h2>
-                <input 
-                    type="range" 
+                <input
+                    type="range"
                     name='range'
                     onChange={handleChange}
                     value={rangeInp}
                 />
             </div>
             <div className="box" style={boxStyle}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <input type="color" />
+                <p style={{ color: color }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <input type="color" onChange={handleChange} name='color' />
             </div>
         </div>
     )
