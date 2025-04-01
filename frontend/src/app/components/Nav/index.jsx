@@ -52,13 +52,15 @@ function Nav(props) {
             <div className="right">
                 {
                     links.navbar.map(l => {
-                        return <Link
-                            href={l.path}
-                            className={pathname == l.path ? "active" : ""}
-                            key={l.name}
-                        >
-                            {l.name}
-                        </Link>
+                        return (
+                            <Link
+                                href={l.path}
+                                className={pathname == l.path ? "active" : ""}
+                                key={l.name}
+                            >
+                                {l.name}
+                            </Link>
+                        )
                     })
                 }
             </div>

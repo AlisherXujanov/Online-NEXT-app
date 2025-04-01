@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:3001"
+
 const links = {
     navbar: [
         { name: "Explore", path: "/" },
@@ -6,14 +8,11 @@ const links = {
         { name: "Trending🔥", path: "/trending" },
         { name: "FAQ💬", path: "/faq" }
     ],
-    footer: [
-
-    ]
+    footer: []
 }
 
 
-
-
 export {
-    links
+    links,
+    BASE_URL
 }
