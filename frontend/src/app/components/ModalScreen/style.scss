@@ -19,12 +19,16 @@
 
         #close-modal-btn {
             position: absolute;
-            top: -20px;
-            right: -20px;
-            @include circle(20px);
-            background: $pink-gradient;
+            top: -15px;
+            right: -15px;
+            background: $indigo-gradient;
             color: $light;
             cursor: pointer;
+            font-weight: bold;
+            transform: scale(1.7);
+            box-shadow: 0 0 10px 5px $light;
+            @include circle(20px);
+            @include flex();
         }
     }
 }
