@@ -58,3 +58,11 @@ $red: #FF7795;
     height: 80vh;
     padding-bottom: 20px;
 }
+
+
+
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}

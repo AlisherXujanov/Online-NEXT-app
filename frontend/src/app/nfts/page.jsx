@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { BASE_URL } from "../store"
 import "./style.scss"
 import Spinner from "../components/Spinner"
+import ModalScreen from "../components/ModalScreen"
 
 
 function NFTs(props) {
