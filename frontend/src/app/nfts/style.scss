@@ -1,0 +1,24 @@
+@use "../assets/styles/vars.scss" as *;
+
+.nfts-page {
+    .action-btns {
+        text-align: right;
+
+        .create-nft-btn {
+            background: $indigo-gradient;
+        }
+    }
+
+    .nfts-list {
+        width: 100%;
+        height: 100%;
+        margin: 20px 0;
+        @include grid(4);
+
+        .nft-item-wrapper {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
