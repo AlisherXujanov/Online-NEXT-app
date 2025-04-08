@@ -12,7 +12,10 @@ function NFTs(props) {
     const [showModal, setShowModal] = useState(false)
     const [form, setForm] = useState({
         name: '',
-        description: ''
+        price: '',
+        description: '',
+        image: '',
+        id: ''
     })
 
     async function getNFTs() {
@@ -38,7 +41,7 @@ function NFTs(props) {
         })
         console.log(response)
         await getNFTs()
-        
+
         setShowModal(false)
         setForm({
             name: '',
@@ -72,13 +75,40 @@ function NFTs(props) {
                             value={form.name}
                             required
                         />
-                        <textarea 
-                            name="description" 
-                            placeholder="NFT Description" 
+                        <input type="number"
+                            placeholder="NFT Price"
+                            name="price"
+                            onChange={(e) => { setForm({ ...form, price: e.target.value }) }}
+                            value={form.price}
+                            required
+                        />
+                        <textarea
+                            name="description"
+                            placeholder="NFT Description"
                             onChange={(e) => { setForm({ ...form, description: e.target.value }) }}
                             value={form.description}
                             required
                         ></textarea>
+                        <input type="url"
+                            placeholder="NFT Image Link"
+                            name="image"
+                            onChange={(e) => { setForm({ ...form, image: e.target.value }) }}
+                            value={form.image}
+                            required
+                        />
+                        {
+                            // JSX syntax  -> allows us to write HTML in JS and vice versa
+                            form.image &&
+                            <p>
+                                <img 
+                                    src={form.image} 
+                                    alt="nft-image" 
+                                    width={"100%"} 
+                                    height={250}
+                                    onClick={(e) => {setForm({ ...form, image: "" })}}
+                                />
+                            </p>
+                        }
                         <button type="submit">Create NFT</button>
                     </form>
                 </ModalScreen>
@@ -91,8 +121,12 @@ function NFTs(props) {
                         nfts.map(nft => {
                             return (
                                 <div className="nft-item-wrapper" key={nft.id}>
-                                    <h2>{nft.name}</h2>
-                                    <p>{nft.description}</p>
+                                    <img src={nft.image} alt="nft-image" />
+                                    <div className="nft-item-body">
+                                        <h2>{nft.name}</h2>
+                                        <p>${nft.price}</p>
+                                    </div>
+                                    <p className="nft-item-description">{nft.description}</p>
                                 </div>
                             )
                         })

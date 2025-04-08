@@ -28,9 +28,19 @@
             border-radius: 10px;
         }
 
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
         button:hover {
-            background-color: $red;
+            background: $indigo-gradient;
             color: $light;
+        }
+
+        img {
+            cursor: pointer;
+            border-radius: 10px;
         }
     }
 
@@ -44,6 +54,40 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
+            img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .nft-item-body {
+                @include flex(row, center, space-between);
+                margin-bottom: 10px;
+            }
+
+            .nft-item-description {
+                max-height: 50px;
+                overflow: auto;
+            }
+
+            ::-webkit-scrollbar-thumb,
+            ::-webkit-scrollbar {
+                background: white;
+                width: 5px;
+                border-radius: 10px;
+            }
+
+            &:hover {
+
+                ::-webkit-scrollbar {
+                    background: $light-gray;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    background: $indigo-gradient;
+                }
+            }
         }
     }
 }

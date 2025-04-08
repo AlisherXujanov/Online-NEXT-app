@@ -3,52 +3,30 @@
     {
       "id": "1",
       "name": "NFT 1",
-      "description": "Description of NFT 1"
+      "price": 100,
+      "description": "Description of NFT 1",
+      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg"
     },
     {
       "id": "2",
       "name": "NFT 2",
-      "description": "Description of NFT 2"
+      "price": 200,
+      "description": "Description of NFT 2",
+      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg"
     },
     {
       "id": "3",
       "name": "NFT 3",
-      "description": "Description of NFT 3"
+      "price": 300,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis non, nisi sed, velit eaque deserunt nobis, minus molestiae animi harum consequuntur repellat commodi. Quam, nulla rerum quod laudantium et voluptatibus!",
+      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg"
     },
     {
-      "id": "4",
-      "name": "NFT 4",
-      "description": "Description of NFT 4"
-    },
-    {
-      "id": "5",
-      "name": "NFT 5",
-      "description": "Description of NFT 5"
-    },
-    {
-      "id": "6",
-      "name": "NFT 6",
-      "description": "Description of NFT 6"
-    },
-    {
-      "id": "7",
-      "name": "NFT 7",
-      "description": "Description of NFT 7"
-    },
-    {
-      "id": "0cc6",
-      "name": "Hello world",
-      "description": "closeModal"
-    },
-    {
-      "id": "b8bb",
-      "name": "Orifjon",
-      "description": "Hello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello worldHello world"
-    },
-    {
-      "id": "2e0c",
-      "name": "Diyor",
-      "description": "Hello world"
+      "id": "",
+      "name": "What is NFT?",
+      "price": "10000",
+      "description": "Non-fungible tokens, often referred to as NFTs, are blockchain-based tokens that each represent a unique asset like a piece of art, digital content, or media.",
+      "image": "https://bernardmarr.com/wp-content/uploads/2021/11/What-Are-NFTs-An-Easy-Explanation-For-Anyone.jpg"
     }
   ]
 }
