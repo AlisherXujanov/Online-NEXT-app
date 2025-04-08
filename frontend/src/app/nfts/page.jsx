@@ -5,6 +5,10 @@ import { BASE_URL } from "../store"
 import Spinner from "../components/Spinner"
 import ModalScreen from "../components/ModalScreen"
 import "./style.scss"
+import { FiEdit } from "react-icons/fi";
+
+
+// CRUD  ->  Create, Read, Update, Delete
 
 
 function NFTs(props) {
@@ -121,6 +125,9 @@ function NFTs(props) {
                         nfts.map(nft => {
                             return (
                                 <div className="nft-item-wrapper" key={nft.id}>
+                                    <span className="edit-nft-btn">
+                                        <FiEdit />
+                                    </span>
                                     <img src={nft.image} alt="nft-image" />
                                     <div className="nft-item-body">
                                         <h2>{nft.name}</h2>

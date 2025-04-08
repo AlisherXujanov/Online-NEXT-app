@@ -9,7 +9,6 @@
         }
     }
 
-
     form {
         padding: 10px;
         background-color: #eee;
@@ -54,6 +53,23 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+
+            .edit-nft-btn {
+                position: absolute;
+                z-index: 999;
+                top: 100px;
+                left: 40%;
+                width: 50px;
+                height: 50px;
+                background: $indigo-gradient;
+                color: $light;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 2em;
+                @include flex(row, center, center);
+                display: none;
+            }
 
             img {
                 width: 100%;
@@ -86,6 +102,14 @@
 
                 ::-webkit-scrollbar-thumb {
                     background: $indigo-gradient;
+                }
+
+                .edit-nft-btn {
+                    display: flex;
+                }
+
+                img {
+                    filter: blur(1px) brightness(0.5);
                 }
             }
         }
