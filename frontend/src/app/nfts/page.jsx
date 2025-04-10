@@ -1,11 +1,12 @@
 "use client"
 import Heading from "../components/Heading"
-import { useState, useEffect } from "react"
-import { BASE_URL } from "../store"
 import Spinner from "../components/Spinner"
 import ModalScreen from "../components/ModalScreen"
-import "./style.scss"
+import { useState, useEffect } from "react"
+import { BASE_URL } from "../store"
 import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import "./style.scss"
 
 
 // CRUD  ->  Create, Read, Update, Delete
@@ -50,7 +51,6 @@ function NFTs(props) {
         cleanUp()
     }
 
-
     function handleEdit(e, nft) {
         e.preventDefault()
         setForm({
@@ -62,6 +62,10 @@ function NFTs(props) {
         })
         setEditMode(true)
         setShowModal(true)
+    }
+
+    async function handleDelete(e, id) {
+        console.log("ID:", id)
     }
 
     function cleanUp() {
@@ -147,9 +151,14 @@ function NFTs(props) {
                         nfts.map(nft => {
                             return (
                                 <div className="nft-item-wrapper" key={nft.id}>
-                                    <span className="edit-nft-btn" onClick={(e) => handleEdit(e, nft)}>
-                                        <FiEdit />
-                                    </span>
+                                    <div className="nft-item-actions">
+                                        <span className="edit-nft-btn" onClick={(e) => handleEdit(e, nft)}>
+                                            <FiEdit />
+                                        </span>
+                                        <span className="delete-nft-btn" onClick={(e) => handleDelete(e, nft.id)}>
+                                            <RiDeleteBin6Line />
+                                        </span>
+                                    </div>
                                     <img src={nft.image} alt="nft-image" />
                                     <div className="nft-item-body">
                                         <h2>{nft.name}</h2>
