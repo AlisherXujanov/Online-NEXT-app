@@ -14,6 +14,7 @@ import { FiEdit } from "react-icons/fi";
 function NFTs(props) {
     const [nfts, setNFTs] = useState([])
     const [showModal, setShowModal] = useState(false)
+    const [editMode, setEditMode] = useState(false)
     const [form, setForm] = useState({
         name: '',
         price: '',
@@ -38,19 +39,40 @@ function NFTs(props) {
 
     async function submitForm(e) {
         e.preventDefault()
-        const URL = BASE_URL + "/nfts"
+        const URL = BASE_URL + "/nfts" + (editMode ? `/${form.id}` : "")
         const response = await fetch(URL, {
-            method: "POST",
+            method: editMode ? "PUT" : "POST",
             body: JSON.stringify(form),
         })
         console.log(response)
         await getNFTs()
-
         setShowModal(false)
+        cleanUp()
+    }
+
+
+    function handleEdit(e, nft) {
+        e.preventDefault()
+        setForm({
+            name: nft.name,
+            price: nft.price,
+            description: nft.description,
+            image: nft.image,
+            id: nft.id
+        })
+        setEditMode(true)
+        setShowModal(true)
+    }
+
+    function cleanUp() {
         setForm({
             name: '',
-            description: ''
+            price: '',
+            description: '',
+            image: '',
+            id: ''
         })
+        setEditMode(false)
     }
 
 
@@ -68,8 +90,8 @@ function NFTs(props) {
             </div>
             {
                 showModal &&
-                <ModalScreen closeModal={() => setShowModal(false)}>
-                    <h1>Create New NFT</h1>
+                <ModalScreen closeModal={() => { setShowModal(false); cleanUp() }}>
+                    <h1 style={{ textAlign: "center" }}>{editMode ? "Edit NFT" : "Create New NFT"}</h1>
                     <form onSubmit={submitForm} className="create-nft-form">
                         <input
                             type="text"
@@ -93,7 +115,7 @@ function NFTs(props) {
                             value={form.description}
                             required
                         ></textarea>
-                        <input type="url"
+                        <input type="text"
                             placeholder="NFT Image Link"
                             name="image"
                             onChange={(e) => { setForm({ ...form, image: e.target.value }) }}
@@ -104,16 +126,16 @@ function NFTs(props) {
                             // JSX syntax  -> allows us to write HTML in JS and vice versa
                             form.image &&
                             <p>
-                                <img 
-                                    src={form.image} 
-                                    alt="nft-image" 
-                                    width={"100%"} 
+                                <img
+                                    src={form.image}
+                                    alt="nft-image"
+                                    width={"100%"}
                                     height={250}
-                                    onClick={(e) => {setForm({ ...form, image: "" })}}
+                                    onClick={(e) => { setForm({ ...form, image: "" }) }}
                                 />
                             </p>
                         }
-                        <button type="submit">Create NFT</button>
+                        <button type="submit">{editMode ? "Edit NFT" : "Create New NFT"}</button>
                     </form>
                 </ModalScreen>
             }
@@ -125,7 +147,7 @@ function NFTs(props) {
                         nfts.map(nft => {
                             return (
                                 <div className="nft-item-wrapper" key={nft.id}>
-                                    <span className="edit-nft-btn">
+                                    <span className="edit-nft-btn" onClick={(e) => handleEdit(e, nft)}>
                                         <FiEdit />
                                     </span>
                                     <img src={nft.image} alt="nft-image" />
