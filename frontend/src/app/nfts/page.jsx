@@ -88,8 +88,7 @@ function NFTs(props) {
             name: '',
             price: '',
             description: '',
-            image: '',
-            id: ''
+            image: ''
         })
         setEditMode(false)
     }
