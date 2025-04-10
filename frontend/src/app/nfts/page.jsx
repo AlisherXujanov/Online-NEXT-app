@@ -4,8 +4,9 @@ import Spinner from "../components/Spinner"
 import ModalScreen from "../components/ModalScreen"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../store"
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { FiEdit } from "react-icons/fi"
+import { RiDeleteBin6Line } from "react-icons/ri"
+import { toast } from 'react-toastify'
 import "./style.scss"
 
 
@@ -39,13 +40,20 @@ function NFTs(props) {
 
     async function submitForm(e) {
         e.preventDefault()
-        const URL = BASE_URL + "/nfts" + (editMode ? `/${form.id}` : "")
-        const response = await fetch(URL, {
-            method: editMode ? "PUT" : "POST",
-            body: JSON.stringify(form),
-        })
-        console.log(response)
-        await getNFTs()
+
+        try{ 
+            const URL = BASE_URL + "/nfts" + (editMode ? `/${form.id}` : "")
+            const response = await fetch(URL, {
+                method: editMode ? "PUT" : "POST",
+                body: JSON.stringify(form),
+            })
+            console.log(response)
+            let msg = editMode ? "NFT updated successfully" : "NFT created successfully"
+            toast.success(msg, { theme: "dark" })
+            await getNFTs()
+        } catch (error) {
+            toast.error("Ooops... Error happened!", { theme: "dark" })
+        }
         setShowModal(false)
         cleanUp()
     }
@@ -69,6 +77,7 @@ function NFTs(props) {
             let response = await fetch(URL, { method: "DELETE" })
             console.log(response)
             await getNFTs()
+            toast.success("NFT deleted successfully", { theme: "dark" })
         } else {
             console.log("Cancelled")
         }

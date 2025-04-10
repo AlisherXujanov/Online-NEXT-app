@@ -1,5 +1,6 @@
 import "./assets/styles/globals.scss"
 import GlobalNav from "./components/Nav"
+import { ToastContainer } from 'react-toastify'
 
 export const metadata = {
   title: "Create Next App",
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="main-layout-wrapper">
           <GlobalNav />
+          <ToastContainer />
           {children}
         </div>
       </body>
