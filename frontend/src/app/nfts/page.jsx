@@ -21,7 +21,6 @@ function NFTs(props) {
         price: '',
         description: '',
         image: '',
-        id: ''
     })
 
     async function getNFTs() {
@@ -64,8 +63,15 @@ function NFTs(props) {
         setShowModal(true)
     }
 
-    async function handleDelete(e, id) {
-        console.log("ID:", id)
+    async function handleDelete(e, item) {
+        if (confirm(`Are you sure to delete:\n"${item.name}" ?`)) {
+            const URL = BASE_URL + "/nfts/" + item.id
+            let response = await fetch(URL, { method: "DELETE" })
+            console.log(response)
+            await getNFTs()
+        } else {
+            console.log("Cancelled")
+        }
     }
 
     function cleanUp() {
@@ -155,7 +161,7 @@ function NFTs(props) {
                                         <span className="edit-nft-btn" onClick={(e) => handleEdit(e, nft)}>
                                             <FiEdit />
                                         </span>
-                                        <span className="delete-nft-btn" onClick={(e) => handleDelete(e, nft.id)}>
+                                        <span className="delete-nft-btn" onClick={(e) => handleDelete(e, nft)}>
                                             <RiDeleteBin6Line />
                                         </span>
                                     </div>
