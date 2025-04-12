@@ -24,7 +24,6 @@ https://firebase.google.com/docs/auth/web/firebaseui
 4. Install required packages in your Vue project:
    ```bash
    npm install firebase
-   npm install vue-router
    ```
 
 ## Step 2: Firebase Configuration

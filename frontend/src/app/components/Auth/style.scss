@@ -1,0 +1,22 @@
+@use "../../assets/styles/_vars.scss" as *;
+
+.auth-container {
+    @include flex(column);
+
+    .toggle-auth-btn-container {
+        padding: 10px;
+        border-radius: 10px;
+        display: inline-block;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: $violet;
+            margin-left: 10px;
+            background-color: $light-gray;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 5px;
+        }
+    }
+}

@@ -1,11 +1,14 @@
 "use client"
-import { RiSearchLine } from "react-icons/ri"
+import "./style.scss"
 import Image from "next/image"
 import LogoPng from "../../assets/icons/logo.png"
 import Link from "next/link"
-import "./style.scss"
+import { RiSearchLine } from "react-icons/ri"
 import { usePathname } from 'next/navigation'
+import ModalScreen from "../ModalScreen"
+import Auth from "../auth"
 import { links } from "../../store"
+import { useState } from "react"
 
 
 // Hook  ->  component controls (different types of hooks exist)
@@ -24,6 +27,7 @@ import { links } from "../../store"
 function Nav(props) {
     // Call hooks here
     const pathname = usePathname()
+    const [showModal, setShowModal] = useState(false)
     // ...
     // ---------------------
     // Other functions and variables
@@ -63,7 +67,16 @@ function Nav(props) {
                         )
                     })
                 }
+                <button className="auth-button" onClick={() => setShowModal(true)}>
+                    🧑🏻‍🦰Sign up
+                </button>
             </div>
+            {
+                showModal &&
+                <ModalScreen closeModal={() => setShowModal(false)}>
+                    <Auth />
+                </ModalScreen>
+            }
         </nav>
     );
 }
