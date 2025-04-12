@@ -3,6 +3,49 @@
 .auth-container {
     @include flex(column);
 
+    form {
+        width: 550px;
+
+        .form-field {
+            margin-bottom: 10px;
+
+            &>* {
+                margin: 5px 0;
+            }
+
+            input,
+            button {
+                padding: 10px 20px;
+                display: block;
+                width: 100%;
+                border-radius: 10px;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background-color: $light-gray;
+                border: 2px solid transparent;
+                outline: 5px solid transparent;
+            }
+
+            button {
+                margin-top: 20px;
+                background: $indigo-gradient;
+                color: $light;
+
+                &:hover {
+                    background: $green-gradient;
+                }
+            }
+
+            input {
+                &:focus {
+                    border: 2px solid $violet;
+                    outline: 5px solid #6E56FF60;
+                }
+            }
+        }
+    }
+
     .toggle-auth-btn-container {
         padding: 10px;
         border-radius: 10px;
