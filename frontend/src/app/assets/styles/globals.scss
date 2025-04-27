@@ -54,4 +54,26 @@ button {
   background-color: $dark;
   color: $light;
   font-family: 'ClashDisplay-Medium', sans-serif;
+
+  @include flex();
+
+  &.delete-nft-btn {
+    background: $red-gradient;
+  }
+
+  &.success-btn {
+    background: $green-gradient;
+  }
+
+  &.edit-nft-btn {
+    background: $indigo-gradient;
+  }
+
+  &.info-btn {
+    background: $orange-gradient;
+  }
+
+  &.warning-btn {
+    background: $red-gradient;
+  }
 }

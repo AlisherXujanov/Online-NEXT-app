@@ -76,10 +76,6 @@
                     font-size: 2em;
                     @include flex(row, center, center);
                 }
-
-                .delete-nft-btn {
-                    background: $red-gradient;
-                }
             }
 
 

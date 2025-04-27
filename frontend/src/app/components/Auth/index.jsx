@@ -4,7 +4,7 @@ import { useState } from "react"
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 
-function Auth() {
+function Auth(props) {
     const [isRegistered, setIsRegistered] = useState(false)
     const toggleRegistered = (e) => {
         e.preventDefault()
@@ -12,7 +12,7 @@ function Auth() {
     }
     return (
         <div className="auth-container">
-            {isRegistered ? <SignIn /> : <SignUp />}
+            {isRegistered ? <SignIn closeModal={props.closeModal} /> : <SignUp />}
 
             <div className="toggle-auth-btn-container">
                 {

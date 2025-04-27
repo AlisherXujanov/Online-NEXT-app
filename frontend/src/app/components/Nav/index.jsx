@@ -10,6 +10,12 @@ import Auth from "../auth"
 import { links } from "../../store"
 import { useState } from "react"
 
+import { FiLogIn } from "react-icons/fi";
+import { TbLogout } from "react-icons/tb";
+import { auth } from '@/firebase/config'
+import { useRouter } from "next/navigation"
+import { toast } from "react-toastify"
+
 
 // Hook  ->  component controls (different types of hooks exist)
 // RULES:
@@ -28,6 +34,21 @@ function Nav(props) {
     // Call hooks here
     const pathname = usePathname()
     const [showModal, setShowModal] = useState(false)
+    const NAVBAR_LINKS = props.user ? links.authLinks : links.nonAuthLinks
+    const router = useRouter()
+
+
+    async function logout(e) {
+        e.preventDefault()
+        try {
+            await auth.signOut()
+            toast.success('Logged out successfully', { theme: 'dark' })
+            router.push("/")
+        } catch (error) {
+            toast.error(error.message, { theme: 'dark' })
+        }
+    }
+
     // ...
     // ---------------------
     // Other functions and variables
@@ -55,7 +76,7 @@ function Nav(props) {
             </div>
             <div className="right">
                 {
-                    links.navbar.map(l => {
+                    NAVBAR_LINKS.map(l => {
                         return (
                             <Link
                                 href={l.path}
@@ -67,14 +88,24 @@ function Nav(props) {
                         )
                     })
                 }
-                <button className="auth-button" onClick={() => setShowModal(true)}>
-                    🧑🏻‍🦰Sign up
-                </button>
+
+                {
+                    props.user ?
+                        <button className="auth-button warning-btn" onClick={(e) => { logout(e) }}>
+                            <TbLogout />
+                            Logout
+                        </button>
+                        :
+                        <button className="auth-button success-btn" onClick={() => setShowModal(true)}>
+                            <FiLogIn />
+                            Sign up
+                        </button>
+                }
             </div>
             {
                 showModal &&
                 <ModalScreen closeModal={() => setShowModal(false)}>
-                    <Auth />
+                    <Auth closeModal={() => setShowModal(false)} />
                 </ModalScreen>
             }
         </nav>
