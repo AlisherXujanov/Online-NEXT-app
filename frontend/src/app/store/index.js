@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:3001"
 
 const links = {
+    // protected routes
     authLinks: [
         { name: "Explore", path: "/" },
         { name: "About", path: "/about" },
@@ -8,6 +9,7 @@ const links = {
         { name: "Trending🔥", path: "/trending" },
         { name: "FAQ💬", path: "/faq" }
     ],
+    // non-protected routes
     nonAuthLinks: [
         { name: "Explore", path: "/" },
         { name: "About", path: "/about" },

@@ -15,6 +15,7 @@ import { TbLogout } from "react-icons/tb";
 import { auth } from '@/firebase/config'
 import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
+import { removeSessionCookie } from "@/utils/cookies"
 
 
 // Hook  ->  component controls (different types of hooks exist)
@@ -43,6 +44,7 @@ function Nav(props) {
         try {
             await auth.signOut()
             toast.success('Logged out successfully', { theme: 'dark' })
+            removeSessionCookie()
             router.push("/")
         } catch (error) {
             toast.error(error.message, { theme: 'dark' })

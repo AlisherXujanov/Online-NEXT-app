@@ -4,6 +4,7 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 import { auth } from "@/firebase/config"
 import { useRouter } from "next/navigation"
+import { setSessionCookie } from "@/utils/cookies"
 import "./style.scss"
 
 
@@ -35,6 +36,7 @@ function SignIn(props) {
             .then((userCredential) => {
                 const user = userCredential.user
                 toast.success("Signed in successfully!", { theme: "dark" })
+                setSessionCookie(user.uid)
                 setFormData({})
                 props.closeModal()
                 router.push("/nfts")
