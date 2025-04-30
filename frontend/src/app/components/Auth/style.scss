@@ -62,4 +62,23 @@
             padding: 5px;
         }
     }
+
+    .action-btns-container {
+        margin-top: 10px;
+        @include flex();
+
+        .social-auth-btn {
+            font-size: 30px;
+            cursor: pointer;
+
+            &:nth-child(2) {
+                color: rgb(10, 181, 249);
+                font-size: 25px;
+            }
+
+            &:nth-child(3) {
+                color: gray;
+            }
+        }
+    }
 }
